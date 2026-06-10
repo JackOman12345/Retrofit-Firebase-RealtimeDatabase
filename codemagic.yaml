@@ -1,0 +1,18 @@
+workflows:
+  android-debug:
+    name: Android Debug APK
+
+    instance_type: linux_x2
+
+    environment:
+      java: 17
+
+    scripts:
+      - name: Give permission to gradlew
+        script: chmod +x gradlew
+
+      - name: Build debug APK
+        script: ./gradlew assembleDebug
+
+    artifacts:
+      - app/build/outputs/**/*.apk
